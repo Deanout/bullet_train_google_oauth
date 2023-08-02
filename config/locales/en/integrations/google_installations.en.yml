@@ -1,0 +1,90 @@
+en:
+  integrations/google_installations: &google_installations
+    label: &label Google Installations
+    breadcrumbs:
+      label: *label
+    navigation:
+      label: *label
+      icon: fab fa-google-s ti ti-google
+    buttons: &buttons
+      new: Add New Google Installation
+      create: Create Google Installation
+      edit: Edit Google Settings
+      update: Update Installation Settings
+      destroy: Remove Google Installation
+      shorthand:
+        edit: Settings
+        destroy: Delete
+      confirmations:
+        # TODO customize for your use-case.
+        destroy: Are you sure you want to disconnect %{google_installation_name} from %{team_name}? This won't remove this Google account from any connections it has to a user account for single sign-on. This will remove any data associated with this installation on %{team_name}. This can't be undone.
+        destroy_from_user: Are you sure you want to disconnect this Google account from %{team_name}? This will remove any data associated with this installation on %{team_name}. This can't be undone.
+    fields: &fields
+      name:
+        _: &name Name
+        label: *name
+        heading: *name
+
+      # 🚅 super scaffolding will insert new fields above this line.
+      created_at:
+        _: &created_at Added
+        label: *created_at
+        heading: *created_at
+      updated_at:
+        _: &updated_at Updated
+        label: *updated_at
+        heading: *updated_at
+    list:
+      section: "Google Installations"
+      contexts:
+        user:
+          header: Integration Installations
+          description: Since you are the registered owner of this Google account, you have the ability to disconnect it from any Teams where it's currently installed as an integration.
+          description_empty: This Google account hasn't been installed as an integration on any Teams.
+          authentication_note: "You can also <a href=\"%{authentication_url}\">connect and manage Google accounts for single sign-on authentication</a>."
+      fields: *fields
+      buttons: *buttons
+    index:
+      section: "%{teams_possessive} Google Installations"
+      contexts:
+        team:
+          header: Google Installations
+          description: Below is a list of Google Installations that have been added for %{team_name}.
+          description_empty: No Google Installations have been added for %{team_name}.
+          authentication_note: "You can also <a href=\"%{authentication_url}\">connect and manage Google accounts for single sign-on authentication</a>."
+      fields: *fields
+      buttons: *buttons
+    show:
+      section: "%{google_installation_name}"
+      header: Google Installation Details
+      description: Below are the details we have for %{google_installation_name}.
+      manage_description: You'll also find options for updating these details or removing %{google_installation_name} from %{team_name} entirely.
+      fields: *fields
+      buttons: *buttons
+    form: &form
+      buttons: *buttons
+      fields: *fields
+    new:
+      section: "New Google Installation for %{team_name}"
+      header: New Google Installation Details
+      description: Please provide the details of the new Google Installation you'd like to add to %{team_name}.
+      form: *form
+    edit:
+      section: "%{google_installation_name}"
+      header: Edit Google Installation Details
+      description: You can update the details or settings for %{google_installation_name} below.
+      form: *form
+    notifications:
+      created: Google Installation was successfully created.
+      updated: Google Installation was successfully updated.
+      destroyed: Google Installation was successfully removed.
+  account:
+    integrations:
+      google_installations: *google_installations
+  activerecord:
+    attributes:
+      integrations/google_installation:
+        name: *name
+        # 🚅 super scaffolding will insert new activerecord attributes above this line.
+        created_at: *created_at
+        updated_at: *updated_at

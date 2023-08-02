@@ -1,0 +1,8 @@
+<% google_account ||= @google_account %>
+<% user ||= @user || google_account&.user %>
+<%= render 'account/users/breadcrumbs', user: user %>
+<%= render 'account/shared/breadcrumb', label: t('.label'), url: [:account, user, :oauth, :google_accounts] %>
+<% if google_account&.persisted? %>
+  <%= render 'account/shared/breadcrumb', label: google_account.label_string, url: [:account, google_account] %>
+<% end %>
+<%= render 'account/shared/breadcrumbs/actions', only_for: 'oauth/google_accounts' %>

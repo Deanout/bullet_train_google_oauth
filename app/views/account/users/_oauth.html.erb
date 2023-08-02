@@ -1,0 +1,3 @@
+<%= render 'account/oauth/stripe_accounts/index', context: @user, stripe_accounts: @user.oauth_stripe_accounts if stripe_enabled? %>
+<%= render 'account/oauth/google_accounts/index', context: @user, google_accounts: @user.oauth_google_accounts if google_enabled? %>
+<% # 🚅 super scaffolding will insert new oauth providers above this line. %>

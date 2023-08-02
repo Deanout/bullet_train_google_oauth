@@ -1,0 +1,66 @@
+en:
+  oauth/google_accounts: &google_accounts
+    label: &label Google Accounts
+    breadcrumbs:
+      label: *label
+    navigation:
+      label: *label
+      icon: fab fa-google-s ti ti-google
+    buttons: &buttons
+      new: Connect Google Account
+      another: Connect Another Google Account
+      edit: Settings
+      update: Save Settings
+      destroy: Disconnect
+      shorthand:
+        edit: Settings
+        destroy: Disconnect
+      confirmations:
+        # TODO customize for your use-case.
+        destroy: Are you sure you want to disconnect the %{google_account_name} Google account from your user account? This will only disconnect it for use as a single-sign on option. It may still be connected as an integration elsewhere.
+    fields: &fields
+      name:
+        name: &name Name
+        label: *name
+        heading: *name
+      # 🚅 super scaffolding will insert new fields above this line.
+      created_at:
+        name: &created_at Connected
+        heading: *created_at
+    index:
+      section: '%{users_possessive} Google Accounts'
+      contexts:
+        user:
+          header: Connected Google Accounts
+          description: You can sign into your account with any of the following Google Accounts. You can also manage where these accounts are used as integrations.
+          description_empty: "You can connect a Google account to your user account for single sign-on below."
+          integration_note: "You can also <a href=\"%{integration_url}\">install Google as an integration</a>."
+      fields: *fields
+      buttons: *buttons
+    show:
+      section: "%{google_account_name}"
+      header: Connected Google Account
+      description: "Your %{google_account_name} Google account is currently connected for single sign-on authentication."
+      fields: *fields
+      buttons: *buttons
+    form: &form
+      buttons: *buttons
+      fields: *fields
+    edit:
+      section: "%{google_account_name}"
+      header: Google Account Settings
+      description: You may not need this page if your Google integration doesn't have any configurable settings, but we leave the page here by default in case you need it.
+      form: *form
+    notifications:
+      created: Great! We've added that Google account to your account!
+      updated: Google account settings were successfully updated.
+      destroyed: We've disconnected that Google account from your account.
+  account:
+    oauth:
+      google_accounts: *google_accounts
+  activerecord:
+    attributes:
+      oauth/google_account:
+        name: *name
+        # 🚅 super scaffolding will insert new activerecord attributes above this line.
+        created_at: *created_at

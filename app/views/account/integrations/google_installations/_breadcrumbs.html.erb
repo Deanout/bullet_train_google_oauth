@@ -1,0 +1,8 @@
+<% google_installation ||= @google_installation %>
+<% team ||= @team || google_installation&.team %>
+<%= render 'account/teams/breadcrumbs', team: team %>
+<%= render 'account/shared/breadcrumb', label: t('.label'), url: [:account, team, :integrations_google_installations] %>
+<% if google_installation&.persisted? %>
+  <%= render 'account/shared/breadcrumb', label: google_installation.label_string, url: [:account, google_installation] %>
+<% end %>
+<%= render 'account/shared/breadcrumbs/actions', only_for: 'integrations/google_installations' %>
